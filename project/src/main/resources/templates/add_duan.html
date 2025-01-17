@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Dự Án</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .add-project-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .add-project-form h2 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .add-project-form label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+            font-weight: bold;
+        }
+
+        .add-project-form input,
+        .add-project-form textarea,
+        .add-project-form select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .add-project-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .add-project-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .add-project-form button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            width: 100%;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media screen and (max-width: 768px) {
+            .add-project-form {
+                padding: 25px;
+                width: 90%;
+            }
+
+            header h1 {
+                font-size: 28px;
+            }
+
+            .add-project-form h2 {
+                font-size: 24px;
+            }
+
+            .add-project-form label {
+                font-size: 16px;
+            }
+
+            .add-project-form input,
+            .add-project-form textarea,
+            .add-project-form select,
+            .add-project-form button {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Thêm Dự Án Mới</h1>
+        <nav>
+            <ul>
+                <li><a href="/admin/duan">Quản Lý Dự Án</a></li>
+                <li><a href="/admin/users">Quản Lý Người Dùng</a></li>
+                <li><a href="/admin/profile">Thông Tin Quản Trị Viên</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="add-project-form">
+            <h2>Thông Tin Dự Án</h2>
+            <form action="/admin/duan/add" method="POST">
+                <label for="tenDuAn">Tên Dự Án:</label>
+                <input type="text" id="tenDuAn" name="tenDuAn" required><br>
+
+                <label for="moTa">Mô Tả:</label>
+                <textarea id="moTa" name="moTa" required></textarea><br>
+
+                <label for="ngayBatDau">Ngày Bắt Đầu:</label>
+                <input type="date" id="ngayBatDau" name="ngayBatDau" required><br>
+
+                <label for="ngayKetThuc">Ngày Kết Thúc:</label>
+                <input type="date" id="ngayKetThuc" name="ngayKetThuc" required><br>
+
+                <label for="tienDo">Tiến Độ:</label>
+                <select id="tienDo" name="tienDo">
+                    <option value="Bắt đầu">Bắt đầu</option>
+                    <option value="Đang thực hiện">Đang thực hiện</option>
+                    <option value="Hoàn thành">Hoàn thành</option>
+                </select><br>
+
+                <button type="submit">Thêm Dự Án</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Quản Lý Tiến Độ Dự Án</p>
+    </footer>
+</body>
+</html>

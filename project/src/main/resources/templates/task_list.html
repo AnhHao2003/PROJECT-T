@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sách Nhiệm Vụ</title>
+</head>
+<body>
+    <h2>Danh Sách Nhiệm Vụ</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Mã Nhiệm Vụ</th>
+                <th>Tên Nhiệm Vụ</th>
+                <th>Người Thực Hiện</th>
+                <th>Dự Án</th>
+                <th>Ngày Bắt Đầu</th>
+                <th>Ngày Hoàn Thành</th>
+                <th>Trạng Thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task : ${nhiemVuList}">
+                <td th:text="${task.maNhiemVu}">Mã</td>
+                <td th:text="${task.tenNhiemVu}">Tên</td>
+                <td th:text="${task.nguoiDung.tenDangNhap}">Người dùng</td>
+                <td th:text="${task.duAn.tenDuAn}">Dự án</td>
+                <td th:text="${task.ngayBatDau}">Ngày bắt đầu</td>
+                <td th:text="${task.ngayHoanThanh}">Ngày hoàn thành</td>
+                <td th:text="${task.trangThai}">Trạng thái</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Nhắc Nhở</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header>
+        <h1>Danh Sách Nhắc Nhở</h1>
+        <nav>
+            <ul>
+                <li><a href="/admin/duan">Quản Lý Dự Án</a></li>
+                <li><a href="/admin/users">Quản Lý Người Dùng</a></li>
+                <li><a href="/admin/profile">Thông Tin Quản Trị Viên</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="list-reminders">
+            <h2>Danh Sách Nhắc Nhở</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã Nhắc Nhở</th>
+                        <th>Mã Người Dùng</th>
+                        <th>Nội Dung</th>
+                        <th>Ngày Nhắc</th>
+                        <th>Mã Nhiệm Vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Duyệt và hiển thị danh sách nhắc nhở -->
+                    <tr th:each="nhacNho : ${listReminders}">
+                        <td th:text="${nhacNho.maNhacNho}"></td>
+                        <td th:text="${nhacNho.maNguoiDung}"></td>
+                        <td th:text="${nhacNho.noiDung}"></td>
+                        <td th:text="${nhacNho.ngayNhac}"></td>
+                        <td th:text="${nhacNho.maNhiemVu}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Quản Lý Tiến Độ Dự Án</p>
+    </footer>
+</body>
+</html>

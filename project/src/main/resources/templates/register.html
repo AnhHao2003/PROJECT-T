@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Đăng ký - Quản lý dự án</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form Container */
+        form {
+            background-color: #ffffff;
+            padding: 50px 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        form:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Heading */
+        h2 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Input fields */
+        input, select {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #3498db;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='10' height='5' viewBox='0 0 10 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 4L9 1' stroke='%23999' stroke-width='1.5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            background-size: 10px;
+        }
+
+        /* Button */
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            form {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            button {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form th:action="@{/register}" method="post">
+        <h2>Đăng ký</h2>
+
+        <!-- Tên đăng nhập -->
+        <input type="text" name="username" placeholder="Tên đăng nhập" required />
+
+        <!-- Mật khẩu -->
+        <input type="password" name="password" placeholder="Mật khẩu" required />
+
+        <!-- Chọn vai trò -->
+        <select name="role" required>
+            <option value="" disabled selected>Chọn vai trò</option>
+            <option value="ADMIN">ADMIN</option>
+            <option value="USER">USER</option>
+        </select>
+
+        <!-- Nút đăng ký -->
+        <button type="submit">Đăng ký</button>
+
+        <!-- Liên kết đăng nhập -->
+        <footer>
+            <p>Đã có tài khoản? <a href="/login">Đăng nhập</a></p>
+        </footer>
+    </form>
+</body>
+</html>

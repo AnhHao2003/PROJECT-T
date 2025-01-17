@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Profile</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    
+    <style>
+    							/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 25px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-info {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.info-item {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+strong {
+    color: #007bff;
+}
+
+a.back-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
+    text-decoration: none;
+    border-radius: 8px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+a.back-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .profile-info {
+        padding: 20px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .info-item {
+        font-size: 16px;
+    }
+
+    a.back-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+    										
+    </style>
+</head>
+<body>
+    <h1>Thông tin Admin</h1>
+
+    <div>
+        <p><strong>Tên đăng nhập:</strong> <span th:text="${admin.tenDangNhap}"></span></p>
+        <p><strong>Vai trò:</strong> <span th:text="${admin.vaiTro}"></span></p>
+    </div>
+
+    <a th:href="@{/admin/dashboard}">Quay lại Dashboard</a>
+</body>
+</html>

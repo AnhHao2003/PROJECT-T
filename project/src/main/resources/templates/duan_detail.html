@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Dự Án</title>
+</head>
+<body>
+    <h1>Chi Tiết Dự Án</h1>
+    <p><strong>Tên Dự Án:</strong> <span th:text="${duAn.tenDuAn}"></span></p>
+    <p><strong>Ngày Bắt Đầu:</strong> <span th:text="${duAn.ngayBatDau}"></span></p>
+    <p><strong>Ngày Kết Thúc:</strong> <span th:text="${duAn.ngayKetThuc}"></span></p>
+    <p><strong>Tiến Độ:</strong> <span th:text="${duAn.tienDo}"></span></p>
+    <p><strong>Trạng Thái:</strong> <span th:text="${duAn.trangThaiDuAn}"></span></p>
+
+    <a href="/admin/duan">Quay lại danh sách dự án</a>
+</body>
+</html>

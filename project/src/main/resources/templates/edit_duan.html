@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh sửa dự án</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #2980b9;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px 60px;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            margin: 40px auto;
+        }
+
+        h2 {
+            font-size: 32px;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-control {
+            font-size: 16px;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ced4da;
+            width: 100%;
+        }
+
+        .form-control:focus {
+            border-color: #2980b9;
+            box-shadow: 0 0 8px rgba(41, 128, 185, 0.3);
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 150px;
+        }
+
+        .btn {
+            font-size: 16px;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #2980b9;
+            border-color: #2980b9;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #1f618d;
+            border-color: #1f618d;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+            border-color: #95a5a6;
+            color: #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+            border-color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    Quản Lý Dự Án
+</header>
+
+<!-- Form chỉnh sửa dự án -->
+<div class="container">
+    <h2>Chỉnh sửa thông tin dự án</h2>
+    <form action="/admin/duan/edit" method="post">
+        <input type="hidden" name="maDuAn" th:value="${duAn.maDuAn}"/>
+
+        <div class="form-group">
+            <label for="tenDuAn">Tên dự án:</label>
+            <input type="text" id="tenDuAn" name="tenDuAn" class="form-control" th:value="${duAn.tenDuAn}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="moTa">Mô tả:</label>
+            <textarea id="moTa" name="moTa" class="form-control" required th:text="${duAn.moTa}"></textarea>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="ngayBatDau">Ngày bắt đầu:</label>
+                <input type="date" id="ngayBatDau" name="ngayBatDau" class="form-control" th:value="${duAn.ngayBatDau}" required />
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="ngayKetThuc">Ngày kết thúc:</label>
+                <input type="date" id="ngayKetThuc" name="ngayKetThuc" class="form-control" th:value="${duAn.ngayKetThuc}" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="tienDo">Tiến độ dự án:</label>
+            <select id="tienDo" name="tienDo" class="form-control">
+                <option value="Chưa bắt đầu" th:selected="${duAn.tienDo == 'Chưa bắt đầu'}">Chưa bắt đầu</option>
+                <option value="Đang thực hiện" th:selected="${duAn.tienDo == 'Đang thực hiện'}">Đang thực hiện</option>
+                <option value="Hoàn thành" th:selected="${duAn.tienDo == 'Hoàn thành'}">Hoàn thành</option>
+            </select>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">💾 Lưu thay đổi</button>
+            <a href="/admin/duan" class="btn btn-secondary">↩️ Quay lại</a>
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer>
+    © 2025 Quản Lý Dự Án. Mọi quyền được bảo lưu.
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Nhắc Nhở Mới</title>
+    <style>
+       /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 25px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px; /* Adjust margin-top for space between header and main content */
+}
+
+.create-reminder-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.create-reminder-form h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.create-reminder-form label {
+    font-size: 18px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.create-reminder-form input,
+.create-reminder-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.create-reminder-form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.create-reminder-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.create-reminder-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+footer {
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    margin-top: 30px; /* Add margin-top to footer to create space between content */
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Media Queries for Responsive Design */
+@media screen and (max-width: 768px) {
+    .create-reminder-form {
+        padding: 20px;
+        width: 90%;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .create-reminder-form h2 {
+        font-size: 24px;
+    }
+
+    .create-reminder-form label {
+        font-size: 16px;
+    }
+
+    .create-reminder-form input,
+    .create-reminder-form textarea,
+    .create-reminder-form button {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tạo Nhắc Nhở Mới</h1>
+        <nav>
+            <ul>
+                <li><a href="/admin/duan">Quản Lý Dự Án</a></li>
+                <li><a href="/admin/users">Quản Lý Người Dùng</a></li>
+                <li><a href="/admin/profile">Thông Tin Quản Trị Viên</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="create-reminder-form">
+            <h2>Nhập Thông Tin Nhắc Nhở</h2>
+            <form action="/admin/nhacnho/add" method="POST">
+                <label for="maNguoiDung">Mã Người Dùng:</label>
+                <input type="number" id="maNguoiDung" name="maNguoiDung" required>
+                
+                <label for="maNhiemVu">Mã Nhiệm Vụ:</label>
+                <input type="number" id="maNhiemVu" name="maNhiemVu" required>
+                
+                <label for="noiDung">Nội Dung:</label>
+                <textarea id="noiDung" name="noiDung" required></textarea>
+                
+                <label for="ngayNhac">Ngày Nhắc Nhở:</label>
+                <input type="date" id="ngayNhac" name="ngayNhac" required>
+                
+                <button type="submit">Lưu Nhắc Nhở</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Quản Lý Tiến Độ Dự Án</p>
+    </footer>
+</body>
+</html>

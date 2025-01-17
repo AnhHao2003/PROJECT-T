@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ Người Dùng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Chào mừng đến với Quản Lý Tiến Độ Dự Án</h1>
+        <nav>
+            <ul>
+                <li><a href="/user-profile">Thông Tin Cá Nhân</a></li>
+                <li><a href="/project_progress">Tiến Độ Dự Án</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
+            </ul>
+        </nav>
+        
+        <style>
+        																				/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #1abc9c;
+    transform: scale(1.1);
+}
+
+/* Main Content */
+main {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* User Info */
+.user-info {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.user-info p {
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+/* Projects Section */
+.projects {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.projects h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #2980b9;
+}
+
+.projects ul {
+    list-style: none;
+}
+
+.projects ul li {
+    margin-bottom: 10px;
+}
+
+.projects ul li a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.projects ul li a:hover {
+    color: #1abc9c;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Reminders Section */
+.reminders {
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reminders h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    color: #c0392b;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 15px 0;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-info, .projects, .reminders {
+        width: 90%;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+        																				
+        </style>
+    </header>
+    
+    <!-- Hiển thị nhiệm vụ -->
+    <h2>Nhiệm Vụ Của Bạn</h2>
+    <table>
+        <tr><th>Tên Nhiệm Vụ</th><th>Mô Tả</th><th>Trạng Thái</th></tr>
+        <tr th:each="nhiemVu : ${nhiemVus}">
+            <td th:text="${nhiemVu.tenNhiemVu}"></td>
+            <td th:text="${nhiemVu.moTa}"></td>
+            <td th:text="${nhiemVu.trangThai}"></td>
+        </tr>
+    </table>
+    
+    <!-- Hiển thị nhắc nhở -->
+   <section class="reminders">
+    <h2>Nhắc Nhở</h2>
+    <table>
+        <tr><th>Nội Dung</th>
+        <th>Ngày Nhắc</th></tr>
+        <tr th:each="nhacNho : ${nhacNhos}">
+            <td th:text="${nhacNho.noiDung}"></td>
+            <td th:text="${nhacNho.ngayNhac}"></td>
+        </tr>
+    </table>
+</section>
+
+    <main>
+        <section class="user-info">
+            <p>Chào <strong th:text="${username}"></strong>, bạn có thể xem và quản lý các nhiệm vụ trong dự án của mình dưới đây.</p>
+        </section>
+        
+        <section class="projects">
+            <h2>Các Dự Án Của Bạn</h2>
+            <ul>
+                <li><a href="/project_details/1">Dự Án A</a> - Tiến độ: 50%</li>
+                <li><a href="/project_details/2">Dự Án B</a> - Tiến độ: 80%</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Quản Lý Tiến Độ Dự Án</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Điều Khiển Quản Trị Viên</title>
+    <style>
+        /* Reset some styles for consistency */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .admin-dashboard {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .admin-dashboard h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .admin-dashboard p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .btn-create-reminder,
+        .btn-view-reminders,
+        .btn-assign-task {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            margin: 5px 0;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-create-reminder:hover,
+        .btn-view-reminders:hover,
+        .btn-assign-task:hover {
+            background-color: #218838;
+        }
+
+        .stats {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .stats ul {
+            list-style: none;
+        }
+
+        .stats ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .stats ul li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .stats ul li a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chào mừng, Quản Trị Viên</h1>
+        <nav>
+            <ul>
+                <li><a href="/admin/duan">Quản Lý Dự Án</a></li>
+                <li><a href="/admin/users">Quản Lý Người Dùng</a></li>
+                <li><a href="/admin/profile">Thông Tin Quản Trị Viên</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="admin-dashboard">
+            <h2>Bảng Điều Khiển Quản Trị</h2>
+            <p>Chào <strong>Người dùng</strong>, bạn có thể quản lý các dự án và người dùng tại đây.</p>
+            
+            <!-- Nút Tạo Nhắc Nhở -->
+            <a href="/admin/nhacnho/create" class="btn-create-reminder">Tạo Nhắc Nhở Mới</a>
+            
+            <!-- Nút Hiển Thị Danh Sách Nhắc Nhở -->
+            <a href="/admin/nhacnho" class="btn-view-reminders">Hiển Thị Danh Sách Nhắc Nhở</a>
+            
+            <!-- Nút Giao Nhiệm Vụ -->
+            <a href="/admin/nhiemvu/assign" class="btn-assign-task">Giao Nhiệm Vụ Mới</a>  <!-- Thêm nút dẫn đến form giao nhiệm vụ -->
+        </section>
+
+        <section class="stats">
+            <h2>Thông Tin Dự Án</h2>
+            <ul>
+                <li><a href="project_details.html">Dự Án A</a> - Tiến độ: 50%</li>
+                <li><a href="project_details.html">Dự Án B</a> - Tiến độ: 80%</li>
+                <li><a href="project_details.html">Dự Án C</a> - Tiến độ: 30%</li> <!-- Thêm dự án mới -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Quản Lý Tiến Độ Dự Án</p>
+    </footer>
+</body>
+</html>

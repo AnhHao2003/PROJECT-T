@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiến Độ Dự Án</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Tiến Độ Dự Án</h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Trang Chủ</a></li>
+                <li><a href="/user-profile">Thông Tin Cá Nhân</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <style>
+    									/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #1abc9c;
+}
+
+/* Main Content */
+main {
+    margin-top: 30px;
+}
+
+/* Section Titles */
+h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+/* Project Details */
+.project-details {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.project-details p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Task Progress */
+.task-progress ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.task-progress li {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.task-progress li:hover {
+    transform: translateY(-5px);
+}
+
+/* Progress Bar */
+progress {
+    width: 100%;
+    height: 20px;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #3498db;
+    border-radius: 10px;
+}
+
+progress::-moz-progress-bar {
+    background-color: #3498db;
+    border-radius: 10px;
+}
+
+.task-progress span {
+    font-weight: bold;
+    color: #2980b9;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    text-align: center;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 15px 0;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    progress {
+        height: 15px;
+    }
+}
+    									
+    </style>
+    
+    <main>
+        <section class="project-details">
+            <h2>Thông Tin Dự Án</h2>
+            <p><strong>Ten Dự Án:</strong> Dự Án A</p>
+            <p><strong>Mô Tả:</strong> Dự án này nhằm phát triển một phần mềm quản lý tiến độ công việc.</p>
+            <p><strong>Ngày Bắt Đầu:</strong> 01/01/2025</p>
+            <p><strong>Ngày Kết Thúc:</strong> 31/12/2025</p>
+        </section>
+
+        <section class="task-progress">
+            <h2>Các Nhiệm Vụ</h2>
+            <ul>
+                <li>
+                    <strong>Thiết Kế Hệ Thống</strong> - Tiến độ: <span>50%</span>
+                    <progress value="50" max="100"></progress>
+                    <p>Ngày Bắt Đầu: 01/01/2025 - Ngày Hoàn Thành: 01/03/2025</p>
+                </li>
+                <li>
+                    <strong>Phát Triển Ứng Dụng</strong> - Tiến độ: <span>80%</span>
+                    <progress value="80" max="100"></progress>
+                    <p>Ngày Bắt Đầu: 01/02/2025 - Ngày Hoàn Thành: 30/06/2025</p>
+                </li>
+                <li>
+                    <strong>Kiểm Thử Phần Mềm</strong> - Tiến độ: <span>30%</span>
+                    <progress value="30" max="100"></progress>
+                    <p>Ngày Bắt Đầu: 01/04/2025 - Ngày Hoàn Thành: 30/09/2025</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Quản Lý Tiến Độ Dự Án</p>
+    </footer>
+</body>
+</html>

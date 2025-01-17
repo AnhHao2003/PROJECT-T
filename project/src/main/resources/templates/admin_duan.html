@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Dự Án</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .project-list {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-list h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .add-project-btn {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-project-btn:hover {
+            background-color: #218838;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f1f1f1;
+        }
+
+        td a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* Action Buttons Styling */
+        .action-btns a {
+            color: #007bff;
+            text-decoration: none;
+            padding: 5px 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #007bff;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .action-btns a:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Quản Lý Dự Án</h1>
+        <nav>
+            <ul>
+                <li><a href="/admin/dashboard">Bảng Điều Khiển</a></li>
+                <li><a href="/admin/duan">Quản Lý Dự Án</a></li>
+                <li><a href="/admin/users">Quản Lý Người Dùng</a></li>
+                <li><a href="/logout">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="project-list">
+            <h2>Danh Sách Dự Án</h2>
+            <a href="/admin/duan/add" class="add-project-btn">Thêm Dự Án Mới</a>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên Dự Án</th>
+                        <th>Ngày Bắt Đầu</th>
+                        <th>Ngày Kết Thúc</th>
+                        <th>Tiến Độ</th>
+                        <th>Thao Tác</th>
+                        <th>Hành Động</th> <!-- New header for actions -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="duAn : ${duans}">
+                        <td><a th:href="@{/admin/duan/{maDuAn}(maDuAn=${duAn.maDuAn})}" th:text="${duAn.tenDuAn}"></a></td>
+                        <td th:text="${duAn.ngayBatDau}"></td>
+                        <td th:text="${duAn.ngayKetThuc}"></td>
+                        <td th:text="${duAn.trangThaiDuAn}"></td>
+                        <td th:text="${duAn.tienDo}"></td>
+                        <td class="action-btns">
+                            <a th:href="@{/admin/duan/edit/{maDuAn}(maDuAn=${duAn.maDuAn})}">Sửa</a> 
+                            <a th:href="@{/admin/duan/delete/{maDuAn}(maDuAn=${duAn.maDuAn})}">Xóa</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Quản Lý Tiến Độ Dự Án</p>
+    </footer>
+</body>
+</html> 

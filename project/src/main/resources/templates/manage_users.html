@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Người Dùng</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    	/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 10px;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+.user-list {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-list h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+td {
+    background-color: #fff;
+}
+
+td a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+td a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+footer p {
+    font-size: 14px;
+}
+    </style>
+    
+</head>
+<body>
+    <header>
+        <h1>Quản Lý Người Dùng</h1>
+        <nav>
+            <ul>
+                <li><a href="/admin/duan">Quản Lý Dự Án</a></li>
+                <li><a href="/admin/users">Quản Lý Người Dùng</a></li>
+                <li><a href="/admin/profile">Thông Tin Quản Trị Viên</a></li>
+                <a href="/logout">Đăng xuất</a>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="user-list">
+            <h2>Danh Sách Người Dùng</h2>
+            <script >
+            function confirmDelete(event){
+            	if(!confirm("Bạn có muốn xóa người dùng này ")){
+            		event.preventDefault();
+            	}
+            }
+            </script>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Họ và Tên</th>
+                        <th>Email</th>
+                        <th>Vai Trò</th>
+                        <th>Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through the users from the model -->
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.tenDangNhap}">Nguyễn Văn A</td>
+                        <td th:text="${user.tenDangNhap}">a@example.com</td>
+                        <td th:text="${user.vaiTro}">Quản Trị Viên</td>
+                         <td>
+				            <a th:href="@{/admin/users/edit/{id}(id=${user.maNguoiDung})}">Sửa</a> 
+				            <a th:href="@{/admin/users/delete/{id}(id=${user.maNguoiDung})}" 
+				               onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này?');">Xóa</a>
+				            <a th:href="@{/admin/users/{id}/assign-task(id=${user.maNguoiDung})}">Giao Nhiệm Vụ</a>
+				        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Quản Lý Tiến Độ Dự Án</p>
+    </footer>
+</body>
+</html>

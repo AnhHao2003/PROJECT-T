@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửa Người Dùng</title>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: auto;
+            font-size: 14px;
+        }
+
+        /* Form Container */
+        .container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 26px;
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #007bff;
+            background-color: #fff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
+
+        /* Buttons - Inline */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button, .btn-back {
+            width: 48%;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        button:hover, .btn-back:hover {
+            background-color: #0056b3;
+            transform: scale(1.02);
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            form {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            button, .btn-back {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    Quản Lý Người Dùng
+</header>
+
+<!-- Form Container -->
+<div class="container">
+    <form th:action="@{/admin/users/edit}" th:object="${user}" method="post">
+        <h1>Sửa Thông Tin Người Dùng</h1>
+
+        <input type="hidden" th:field="*{maNguoiDung}"/>
+
+        <label for="tenDangNhap">Tên Đăng Nhập:</label>
+        <input type="text" id="tenDangNhap" th:field="*{tenDangNhap}" placeholder="Nhập tên đăng nhập" required/>
+
+        <label for="matKhau">Mật Khẩu:</label>
+        <input type="password" id="matKhau" th:field="*{matKhau}" placeholder="Nhập mật khẩu" required/>
+
+        <label for="vaiTro">Vai Trò:</label>
+        <select id="vaiTro" th:field="*{vaiTro}">
+            <option value="admin">Quản Trị Viên</option>
+            <option value="user">Người Dùng</option>
+        </select>
+
+        <!-- Button Group: 2 nút trên 1 hàng -->
+        <div class="button-group">
+            <button type="submit">💾 Lưu Thay Đổi</button>
+            <a href="/admin/users" class="btn-back">↩️ Quay Lại</a>
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer>
+   © 2025 Quản Lý Dự Án. Mọi quyền được bảo lưu.
+</footer>
+
+</body>
+</html>
